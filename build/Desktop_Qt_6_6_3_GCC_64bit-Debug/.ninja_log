@@ -1,9 +1,0 @@
-# ninja log v6
-7	1274	1721310672074056527	sqliteUi_autogen/timestamp	a9ba6c4c0db1a02e
-7	1274	1721310672074056527	sqliteUi_autogen/mocs_compilation.cpp	a9ba6c4c0db1a02e
-7	1274	1721310672074056527	/home/kaio/sqliteUi/build/Desktop_Qt_6_6_3_GCC_64bit-Debug/sqliteUi_autogen/timestamp	a9ba6c4c0db1a02e
-7	1274	1721310672074056527	/home/kaio/sqliteUi/build/Desktop_Qt_6_6_3_GCC_64bit-Debug/sqliteUi_autogen/mocs_compilation.cpp	a9ba6c4c0db1a02e
-1281	10619	1721310672117390091	CMakeFiles/sqliteUi.dir/main.cpp.o	ca01638d7ebf8425
-1280	12900	1721310672114056740	CMakeFiles/sqliteUi.dir/sqliteUi_autogen/mocs_compilation.cpp.o	5449d5d7f36344bd
-1282	13114	1721310672117390091	CMakeFiles/sqliteUi.dir/src/sqliteui.cpp.o	d1de77fcc738e807
-13114	14196	1721310683950785802	sqliteUi	73d55dd5915ab6fa
