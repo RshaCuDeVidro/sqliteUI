@@ -86,12 +86,38 @@ class Ui_SQLiteUi(object):
         self.tabWidget_paginas.addTab(self.tab, "")
         self.Navegar = QWidget()
         self.Navegar.setObjectName(u"Navegar")
+        self.Navegar.setLayoutDirection(Qt.LayoutDirection.LeftToRight)
         self.horizontalLayout_2 = QHBoxLayout(self.Navegar)
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.verticalLayout_3 = QVBoxLayout()
+        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
+        self.horizontalLayout_4 = QHBoxLayout()
+        self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
+        self.label = QLabel(self.Navegar)
+        self.label.setObjectName(u"label")
+
+        self.horizontalLayout_4.addWidget(self.label)
+
+        self.comboBox = QComboBox(self.Navegar)
+        self.comboBox.setObjectName(u"comboBox")
+        self.comboBox.setMinimumSize(QSize(100, 0))
+
+        self.horizontalLayout_4.addWidget(self.comboBox)
+
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_4.addItem(self.horizontalSpacer_2)
+
+
+        self.verticalLayout_3.addLayout(self.horizontalLayout_4)
+
         self.tableWidget_2 = QTableWidget(self.Navegar)
         self.tableWidget_2.setObjectName(u"tableWidget_2")
 
-        self.horizontalLayout_2.addWidget(self.tableWidget_2)
+        self.verticalLayout_3.addWidget(self.tableWidget_2)
+
+
+        self.horizontalLayout_2.addLayout(self.verticalLayout_3)
 
         self.tabWidget_paginas.addTab(self.Navegar, "")
         self.tab_3 = QWidget()
@@ -116,7 +142,7 @@ class Ui_SQLiteUi(object):
 
         self.retranslateUi(SQLiteUi)
 
-        self.tabWidget_paginas.setCurrentIndex(1)
+        self.tabWidget_paginas.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(SQLiteUi)
@@ -127,6 +153,7 @@ class Ui_SQLiteUi(object):
         self.pushButton_open.setText(QCoreApplication.translate("SQLiteUi", u"Abrir Banco de Dados", None))
         self.pushButton_2_new.setText(QCoreApplication.translate("SQLiteUi", u"Novo Banco de Dados", None))
         self.tabWidget_paginas.setTabText(self.tabWidget_paginas.indexOf(self.tab), QCoreApplication.translate("SQLiteUi", u"Estrutura do Banco", None))
+        self.label.setText(QCoreApplication.translate("SQLiteUi", u"Tabela:", None))
         self.tabWidget_paginas.setTabText(self.tabWidget_paginas.indexOf(self.Navegar), QCoreApplication.translate("SQLiteUi", u"Navegar pelo Banco", None))
         self.tabWidget_paginas.setTabText(self.tabWidget_paginas.indexOf(self.tab_3), QCoreApplication.translate("SQLiteUi", u"Executar SQL", None))
     # retranslateUi
