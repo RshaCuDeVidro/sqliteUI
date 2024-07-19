@@ -42,11 +42,13 @@ class Ui_Tabela(object):
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.adicionar_campo = QPushButton(self.tab)
         self.adicionar_campo.setObjectName(u"adicionar_campo")
+        self.adicionar_campo.setEnabled(False)
 
         self.horizontalLayout.addWidget(self.adicionar_campo)
 
         self.remover_campo = QPushButton(self.tab)
         self.remover_campo.setObjectName(u"remover_campo")
+        self.remover_campo.setEnabled(False)
 
         self.horizontalLayout.addWidget(self.remover_campo)
 
@@ -122,7 +124,7 @@ class Ui_Tabela(object):
 
         self.retranslateUi(Tabela)
 
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(Tabela)

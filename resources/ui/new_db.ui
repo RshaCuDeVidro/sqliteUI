@@ -27,7 +27,7 @@
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="tab">
       <attribute name="title">
@@ -38,6 +38,9 @@
         <layout class="QHBoxLayout" name="horizontalLayout">
          <item>
           <widget class="QPushButton" name="adicionar_campo">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="text">
             <string>Adicionar</string>
            </property>
@@ -45,6 +48,9 @@
          </item>
          <item>
           <widget class="QPushButton" name="remover_campo">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="text">
             <string>Remover</string>
            </property>
