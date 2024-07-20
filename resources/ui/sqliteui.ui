@@ -102,7 +102,17 @@ background-color: rgb(222, 222, 222);
          <widget class="QTreeWidget" name="treeWidget">
           <column>
            <property name="text">
-            <string notr="true">1</string>
+            <string>Nome</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Tipo</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Esquema</string>
            </property>
           </column>
          </widget>
@@ -165,6 +175,37 @@ background-color: rgb(222, 222, 222);
         <string>Executar SQL</string>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_5">
+          <item>
+           <widget class="QLabel" name="label_2">
+            <property name="text">
+             <string>Executar</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Orientation::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
         <item>
          <widget class="QTextEdit" name="textEdit"/>
         </item>

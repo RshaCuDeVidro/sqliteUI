@@ -1,7 +1,7 @@
 from resources.ui.ui_sqliteui import Ui_SQLiteUi
 from PySide6 import QtWidgets, QtCore, QtGui
 import sys
-from PySide6.QtWidgets import QFileDialog, QTableWidgetItem, QComboBox
+from PySide6.QtWidgets import QFileDialog, QTableWidgetItem, QComboBox, QTreeWidgetItem
 from src.utils import list_tables, open_database
 from src.new_db_window import NewDbWindow
 
@@ -17,6 +17,44 @@ class Sqliteui(QtWidgets.QMainWindow, Ui_SQLiteUi):
         self.con = None
 
         self.pushButton_2_new.clicked.connect(self.new_sql)
+        self.treeWidget.setHeaderLabels(["Nome", "Tipo", "Esquema"]) # <=== Colocando header porque por algum motivo o qtdesigner nao ta fazendo o unico trabalho dele 
+        
+
+
+    def SQLStructure(self):
+        """
+        Fazer a estutura do banco usando aquele QTreeWidget :>
+		"""
+        self.cursor.execute("SELECT name FROM sqlite_master WHERE type='table'")
+
+        tables = [row[0] for row in self.cursor.fetchall()]
+
+        for table in tables:
+
+            table_item = QTreeWidgetItem([table, "", ""])
+            self.treeWidget.addTopLevelItem(table_item)
+            self.cursor.execute(f"PRAGMA table_info({table})")
+            """
+			sqlite> .tables
+			users      users_use
+			sqlite> pragma table_info(users)  ## <-- Exemplo de Pragma table_info
+			   ...> ;
+			0|id|INTEGER|0||1
+			1|userid|TEXT|0||0
+			2|username|TEXT|0||0
+			3|limite|INTEGER|0||0
+			sqlite>
+Lembra de eu tirar isso depois
+"""
+
+            columns = self.cursor.fetchall()
+            for column in columns:
+                column_item = QTreeWidgetItem(
+                    [column[1], column[2], f'"{column[1]}" {column[2]}']
+                )
+                table_item.addChild(column_item)
+        pass
+
 
     def comboBoxTableChanged(self, index):
         if self.cursor is None or self.con is None:
@@ -50,6 +88,9 @@ class Sqliteui(QtWidgets.QMainWindow, Ui_SQLiteUi):
         tables = list_tables(self.cursor)  # Use a função do utils
         self.comboBox.addItems(tables)
         self.comboBox.setEnabled(True)
+
+        self.SQLStructure() # Iniciar estrutura da tabela do banco 
+
 
     def new_sql(self):
         self.nova_janela = NewDbWindow()

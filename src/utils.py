@@ -1,6 +1,9 @@
 import sqlite3
 
 def list_tables(cur):
+    """
+    Listar todas as tabelas do banco
+    """
     lista = []
     cur.execute("SELECT name FROM sqlite_master WHERE type='table';")
     busca = cur.fetchall()

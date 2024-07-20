@@ -76,9 +76,6 @@ class Ui_SQLiteUi(object):
         self.horizontalLayout_3 = QHBoxLayout(self.tab)
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
         self.treeWidget = QTreeWidget(self.tab)
-        __qtreewidgetitem = QTreeWidgetItem()
-        __qtreewidgetitem.setText(0, u"1");
-        self.treeWidget.setHeaderItem(__qtreewidgetitem)
         self.treeWidget.setObjectName(u"treeWidget")
 
         self.horizontalLayout_3.addWidget(self.treeWidget)
@@ -124,6 +121,25 @@ class Ui_SQLiteUi(object):
         self.tab_3.setObjectName(u"tab_3")
         self.verticalLayout_2 = QVBoxLayout(self.tab_3)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.horizontalLayout_5 = QHBoxLayout()
+        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
+        self.label_2 = QLabel(self.tab_3)
+        self.label_2.setObjectName(u"label_2")
+
+        self.horizontalLayout_5.addWidget(self.label_2)
+
+        self.pushButton = QPushButton(self.tab_3)
+        self.pushButton.setObjectName(u"pushButton")
+
+        self.horizontalLayout_5.addWidget(self.pushButton)
+
+        self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_5.addItem(self.horizontalSpacer_3)
+
+
+        self.verticalLayout_2.addLayout(self.horizontalLayout_5)
+
         self.textEdit = QTextEdit(self.tab_3)
         self.textEdit.setObjectName(u"textEdit")
 
@@ -152,9 +168,15 @@ class Ui_SQLiteUi(object):
         SQLiteUi.setWindowTitle(QCoreApplication.translate("SQLiteUi", u"SQLiteUi", None))
         self.pushButton_open.setText(QCoreApplication.translate("SQLiteUi", u"Abrir Banco de Dados", None))
         self.pushButton_2_new.setText(QCoreApplication.translate("SQLiteUi", u"Novo Banco de Dados", None))
+        ___qtreewidgetitem = self.treeWidget.headerItem()
+        ___qtreewidgetitem.setText(2, QCoreApplication.translate("SQLiteUi", u"Esquema", None));
+        ___qtreewidgetitem.setText(1, QCoreApplication.translate("SQLiteUi", u"Tipo", None));
+        ___qtreewidgetitem.setText(0, QCoreApplication.translate("SQLiteUi", u"Nome", None));
         self.tabWidget_paginas.setTabText(self.tabWidget_paginas.indexOf(self.tab), QCoreApplication.translate("SQLiteUi", u"Estrutura do Banco", None))
         self.label.setText(QCoreApplication.translate("SQLiteUi", u"Tabela:", None))
         self.tabWidget_paginas.setTabText(self.tabWidget_paginas.indexOf(self.Navegar), QCoreApplication.translate("SQLiteUi", u"Navegar pelo Banco", None))
+        self.label_2.setText(QCoreApplication.translate("SQLiteUi", u"Executar", None))
+        self.pushButton.setText("")
         self.tabWidget_paginas.setTabText(self.tabWidget_paginas.indexOf(self.tab_3), QCoreApplication.translate("SQLiteUi", u"Executar SQL", None))
     # retranslateUi
 
