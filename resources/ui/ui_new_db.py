@@ -121,6 +121,25 @@ class Ui_Tabela(object):
 
         self.verticalLayout_2.addWidget(self.texto_sql)
 
+        self.horizontalLayout_3 = QHBoxLayout()
+        self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
+        self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_3.addItem(self.horizontalSpacer_3)
+
+        self.ok_button = QPushButton(Tabela)
+        self.ok_button.setObjectName(u"ok_button")
+
+        self.horizontalLayout_3.addWidget(self.ok_button)
+
+        self.cancel_button = QPushButton(Tabela)
+        self.cancel_button.setObjectName(u"cancel_button")
+
+        self.horizontalLayout_3.addWidget(self.cancel_button)
+
+
+        self.verticalLayout_2.addLayout(self.horizontalLayout_3)
+
 
         self.retranslateUi(Tabela)
 
@@ -154,5 +173,7 @@ class Ui_Tabela(object):
         ___qtablewidgetitem6 = self.tabela_rest.horizontalHeaderItem(3)
         ___qtablewidgetitem6.setText(QCoreApplication.translate("Tabela", u"SQL", None));
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QCoreApplication.translate("Tabela", u"Restri\u00e7\u00f5es", None))
+        self.ok_button.setText(QCoreApplication.translate("Tabela", u"OK", None))
+        self.cancel_button.setText(QCoreApplication.translate("Tabela", u"Cancelar", None))
     # retranslateUi
 

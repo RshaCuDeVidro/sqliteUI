@@ -1,6 +1,7 @@
 from PySide6 import QtWidgets
 from resources.ui.ui_new_db import Ui_Tabela
-from PySide6.QtWidgets import QTableWidgetItem, QComboBox, QCheckBox
+from PySide6.QtWidgets import QTableWidgetItem, QComboBox, QCheckBox, QFileDialog
+from src.utils import open_database
 
 class NewDbWindow(QtWidgets.QWidget, Ui_Tabela):
     def __init__(self):
@@ -13,6 +14,11 @@ class NewDbWindow(QtWidgets.QWidget, Ui_Tabela):
         self.nome_tabela.editingFinished.connect(self.set_table_name)
         self.adicionar_campo.clicked.connect(self.add_camp)
         self.tabela_campos.itemChanged.connect(self.handle_item_changed)
+        self.ok_button.clicked.connect(self.ok_button_pressed)
+        self.cancel_button.clicked.connect(lambda: self.close())
+
+        self.tabela_campos.itemClicked.connect(lambda item: self.tabela_campos.setCurrentItem(item)) # muda o currentItem quando outro item é clicado
+        self.remover_campo.clicked.connect(self.remove_camp)
 
     def write_sql_text(self):
         currentText = self.texto_sql.toPlainText()
@@ -25,7 +31,7 @@ class NewDbWindow(QtWidgets.QWidget, Ui_Tabela):
         self.texto_sql.setPlainText("\n".join(new_text))
 
     def set_table_name(self):
-        self.texto_sql.setPlainText(f'CREATE TABLE "{self.nome_tabela.text()}" (\n\n)')
+        self.texto_sql.setPlainText(f'CREATE TABLE "{self.nome_tabela.text()}" (\n\n);')
         self.adicionar_campo.setEnabled(True)
         self.remover_campo.setEnabled(True)
 
@@ -34,7 +40,7 @@ class NewDbWindow(QtWidgets.QWidget, Ui_Tabela):
         self.tabela_campos.insertRow(currentIndex)
 
         tipo = QComboBox()
-        tipo.addItems(["INTEGER", "TEXT", "NUMERIC", "BLOB"])
+        tipo.addItems(["INTEGER", "TEXT", "NUMERIC", "BLOB", "BIT"])
 
         pk = QCheckBox()
 
@@ -67,3 +73,27 @@ class NewDbWindow(QtWidgets.QWidget, Ui_Tabela):
         if 0 <= row < len(self.values):
             self.values[row][key] = value
             self.write_sql_text()
+
+    def ok_button_pressed(self):
+        path = QFileDialog.getSaveFileName(self, "Salvar arquivo", "/home/", "Sqlite (*.db *.sql *.sqlite3 *.sqlite)")[0]
+        if path == "":
+            return
+        _, cursor = open_database(path + ".db")
+
+        current_text = self.texto_sql.toPlainText()
+        index = current_text.rfind(",")
+        new_text = current_text[:index] + current_text[index + 1:] # tirando a virgula do ultimo campo
+
+        cursor.execute(new_text)
+        self.close()
+
+    def remove_camp(self):
+        currentRow = self.tabela_campos.currentRow()
+        if currentRow == -1:
+            return
+        
+        self.values.pop(currentRow)
+        self.write_sql_text()
+        self.tabela_campos.removeRow(currentRow) # deleta o currentItem
+
+        self.tabela_campos.setCurrentItem(None) # tira o currentItem atual

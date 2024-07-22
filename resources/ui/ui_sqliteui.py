@@ -3,15 +3,23 @@
 ################################################################################
 ## Form generated from reading UI file 'sqliteui.ui'
 ##
-## Created by: Qt User Interface Compiler version 5.15.14
+## Created by: Qt User Interface Compiler version 6.7.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
-from PySide6.QtCore import *  # type: ignore
-from PySide6.QtGui import *  # type: ignore
-from PySide6.QtWidgets import *  # type: ignore
-
+from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
+    QMetaObject, QObject, QPoint, QRect,
+    QSize, QTime, QUrl, Qt)
+from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
+    QFont, QFontDatabase, QGradient, QIcon,
+    QImage, QKeySequence, QLinearGradient, QPainter,
+    QPalette, QPixmap, QRadialGradient, QTransform)
+from PySide6.QtWidgets import (QApplication, QComboBox, QHBoxLayout, QHeaderView,
+    QLabel, QMainWindow, QPushButton, QSizePolicy,
+    QSpacerItem, QTabWidget, QTableWidget, QTableWidgetItem,
+    QTextEdit, QTreeWidget, QTreeWidgetItem, QVBoxLayout,
+    QWidget)
 
 class Ui_SQLiteUi(object):
     def setupUi(self, SQLiteUi):
@@ -62,7 +70,7 @@ class Ui_SQLiteUi(object):
 
         self.horizontalLayout.addWidget(self.pushButton_2_new)
 
-        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.horizontalLayout.addItem(self.horizontalSpacer)
 
@@ -76,9 +84,6 @@ class Ui_SQLiteUi(object):
         self.horizontalLayout_3 = QHBoxLayout(self.tab)
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
         self.treeWidget = QTreeWidget(self.tab)
-        __qtreewidgetitem = QTreeWidgetItem()
-        __qtreewidgetitem.setText(0, u"1");
-        self.treeWidget.setHeaderItem(__qtreewidgetitem)
         self.treeWidget.setObjectName(u"treeWidget")
 
         self.horizontalLayout_3.addWidget(self.treeWidget)
@@ -86,7 +91,7 @@ class Ui_SQLiteUi(object):
         self.tabWidget_paginas.addTab(self.tab, "")
         self.Navegar = QWidget()
         self.Navegar.setObjectName(u"Navegar")
-        self.Navegar.setLayoutDirection(Qt.LayoutDirection.LeftToRight)
+        self.Navegar.setLayoutDirection(Qt.LeftToRight)
         self.horizontalLayout_2 = QHBoxLayout(self.Navegar)
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
         self.verticalLayout_3 = QVBoxLayout()
@@ -104,7 +109,7 @@ class Ui_SQLiteUi(object):
 
         self.horizontalLayout_4.addWidget(self.comboBox)
 
-        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.horizontalLayout_4.addItem(self.horizontalSpacer_2)
 
