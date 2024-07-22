@@ -12,13 +12,29 @@ class Sqliteui(QtWidgets.QMainWindow, Ui_SQLiteUi):
         self.pushButton_open.clicked.connect(self.open_sql)
         self.comboBox.setEnabled(False)
         self.comboBox.currentTextChanged.connect(self.comboBoxTableChanged)
-        
+        self.pushButton_2_new.clicked.connect(self.new_sql)
+
         self.cursor = None
         self.con = None
 
-        self.pushButton_2_new.clicked.connect(self.new_sql)
-        self.treeWidget.setHeaderLabels(["Nome", "Tipo", "Esquema"]) # <=== Colocando header porque por algum motivo o qtdesigner nao ta fazendo o unico trabalho dele 
+        #paginação
+        self.current_page = 0
+        self.itemPorPage = 10
         
+        self.pushButton_pagDps.clicked.connect(self.next_page)
+        self.pushButton_pagAntes.clicked.connect(self.prev_page)       
+
+
+    def next_page(self):
+        if (self.current_page + 1) * self.itemPorPage < len(self.rows):
+            self.current_page += 1
+            self.update_table()
+
+    def prev_page(self):
+        if self.current_page > 0:
+            self.current_page -= 1
+            self.update_table()
+
 
 
     def SQLStructure(self):
@@ -62,20 +78,48 @@ Lembra de eu tirar isso depois
             return
 
         self.cursor.execute(f'SELECT * FROM {index}')
-        col_names = [description[0] for description in self.cursor.description]
-        rows = self.cursor.fetchall()
-        
-        self.tableWidget_2.setRowCount(len(rows))
-        self.tableWidget_2.setColumnCount(len(col_names))
-        self.tableWidget_2.setHorizontalHeaderLabels(col_names)
-        
-        for row_num, row_data in enumerate(rows):
+        self.col_names = [description[0] for description in self.cursor.description]
+        self.rows = self.cursor.fetchall()
+    
+        self.update_table()
+
+    def update_table(self):
+        start_row = self.current_page * self.itemPorPage
+        end_row = start_row + self.itemPorPage
+        page_data = self.rows[start_row:end_row]
+    
+        self.tableWidget_2.setRowCount(len(page_data))
+        self.tableWidget_2.setColumnCount(len(self.col_names))
+        self.tableWidget_2.setHorizontalHeaderLabels(self.col_names)
+    
+        for row_num, row_data in enumerate(page_data):
             for col_num, data in enumerate(row_data):
                 item = QTableWidgetItem(str(data))
                 self.tableWidget_2.setItem(row_num, col_num, item)
-        
+    
         self.tableWidget_2.resizeColumnsToContents()
-        print(index)
+
+
+    #def comboBoxTableChanged(self, index):
+        #if self.cursor is None or self.con is None:
+        #    print("sem conexão ou sem cursor")
+        #    return
+
+        #self.cursor.execute(f'SELECT * FROM {index}')
+        #col_names = [description[0] for description in self.cursor.description]
+        #rows = self.cursor.fetchall()
+        
+        #self.tableWidget_2.setRowCount(len(rows))
+        #self.tableWidget_2.setColumnCount(len(col_names))
+        #self.tableWidget_2.setHorizontalHeaderLabels(col_names)
+        
+        #for row_num, row_data in enumerate(rows):
+        #    for col_num, data in enumerate(row_data):
+        #        item = QTableWidgetItem(str(data))
+        #        self.tableWidget_2.setItem(row_num, col_num, item)
+        #
+        #self.tableWidget_2.resizeColumnsToContents()
+        #print(index)
 
     def open_sql(self):
         print('aa')

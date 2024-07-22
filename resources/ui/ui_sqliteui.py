@@ -105,6 +105,19 @@ class Ui_SQLiteUi(object):
 
         self.horizontalLayout_4.addItem(self.horizontalSpacer_2)
 
+        self.label_3 = QLabel(self.Navegar)
+        self.label_3.setObjectName(u"label_3")
+
+        self.horizontalLayout_4.addWidget(self.label_3)
+
+        self.spinBox = QSpinBox(self.Navegar)
+        self.spinBox.setObjectName(u"spinBox")
+        self.spinBox.setMaximum(2500)
+        self.spinBox.setSingleStep(10)
+        self.spinBox.setValue(200)
+
+        self.horizontalLayout_4.addWidget(self.spinBox)
+
 
         self.verticalLayout_3.addLayout(self.horizontalLayout_4)
 
@@ -112,6 +125,35 @@ class Ui_SQLiteUi(object):
         self.tableWidget_2.setObjectName(u"tableWidget_2")
 
         self.verticalLayout_3.addWidget(self.tableWidget_2)
+
+        self.horizontalLayout_6 = QHBoxLayout()
+        self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
+        self.label_5 = QLabel(self.Navegar)
+        self.label_5.setObjectName(u"label_5")
+
+        self.horizontalLayout_6.addWidget(self.label_5)
+
+        self.label_tamanho = QLabel(self.Navegar)
+        self.label_tamanho.setObjectName(u"label_tamanho")
+
+        self.horizontalLayout_6.addWidget(self.label_tamanho)
+
+        self.horizontalSpacer_4 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_6.addItem(self.horizontalSpacer_4)
+
+        self.pushButton_pagAntes = QPushButton(self.Navegar)
+        self.pushButton_pagAntes.setObjectName(u"pushButton_pagAntes")
+
+        self.horizontalLayout_6.addWidget(self.pushButton_pagAntes)
+
+        self.pushButton_pagDps = QPushButton(self.Navegar)
+        self.pushButton_pagDps.setObjectName(u"pushButton_pagDps")
+
+        self.horizontalLayout_6.addWidget(self.pushButton_pagDps)
+
+
+        self.verticalLayout_3.addLayout(self.horizontalLayout_6)
 
 
         self.horizontalLayout_2.addLayout(self.verticalLayout_3)
@@ -158,7 +200,7 @@ class Ui_SQLiteUi(object):
 
         self.retranslateUi(SQLiteUi)
 
-        self.tabWidget_paginas.setCurrentIndex(0)
+        self.tabWidget_paginas.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(SQLiteUi)
@@ -174,6 +216,11 @@ class Ui_SQLiteUi(object):
         ___qtreewidgetitem.setText(0, QCoreApplication.translate("SQLiteUi", u"Nome", None));
         self.tabWidget_paginas.setTabText(self.tabWidget_paginas.indexOf(self.tab), QCoreApplication.translate("SQLiteUi", u"Estrutura do Banco", None))
         self.label.setText(QCoreApplication.translate("SQLiteUi", u"Tabela:", None))
+        self.label_3.setText(QCoreApplication.translate("SQLiteUi", u"Mostrando", None))
+        self.label_5.setText(QCoreApplication.translate("SQLiteUi", u"Tamanho:", None))
+        self.label_tamanho.setText("")
+        self.pushButton_pagAntes.setText(QCoreApplication.translate("SQLiteUi", u"<<<", None))
+        self.pushButton_pagDps.setText(QCoreApplication.translate("SQLiteUi", u">>>", None))
         self.tabWidget_paginas.setTabText(self.tabWidget_paginas.indexOf(self.Navegar), QCoreApplication.translate("SQLiteUi", u"Navegar pelo Banco", None))
         self.label_2.setText(QCoreApplication.translate("SQLiteUi", u"Executar", None))
         self.pushButton.setText("")
